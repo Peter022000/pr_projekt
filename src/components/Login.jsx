@@ -4,9 +4,11 @@ import Footer from "./Footer";
 import {
     MDBContainer,
     MDBInput,
-    MDBCheckbox,
-    MDBBtn,
-    MDBIcon, MDBCard, MDBCardBody, MDBRow, MDBCol, MDBCardImage
+    MDBCard,
+    MDBCardBody,
+    MDBRow,
+    MDBCol,
+    MDBCardImage
 }
     from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
