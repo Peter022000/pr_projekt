@@ -9,17 +9,19 @@ const MovieCard = (props) => {
     const {title, title2, ranking, src} = props;
 
     return (
-        <Link style={{color: 'black', textDecoration: "none"}} to="/details" state={{ movie: props }}>
-        <Card style={{ width: '18rem', margin: '1em', zIndex:1}}>
-            <Card.Img variant="top" src={src} />
-            <Card.Body>
-                <Card.Title>{title}</Card.Title>
-                <Card.Text>{title2}</Card.Text>
-                <Card.Text>Ocena: {ranking}</Card.Text>
-                {/*<Button variant="primary"><Link style={{color: 'white', textDecoration: "none"}} to={{pathname:"/movieDetails"}} state={{ movie: props }}>Szczegóły</Link></Button>*/}
-            </Card.Body>
-        </Card>
-        </Link>
+        <div style={{margin: '1em'}}>
+            <Link style={{color: 'black', textDecoration: "none"}} to="/details" state={{ movie: props }}>
+            <Card style={{ width: '18rem', zIndex:1}}>
+                <Card.Img variant="top" src={src} />
+                <Card.Body>
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Text>{title2}</Card.Text>
+                    <Card.Text>Ocena: {ranking}</Card.Text>
+                    {/*<Button variant="primary"><Link style={{color: 'white', textDecoration: "none"}} to={{pathname:"/movieDetails"}} state={{ movie: props }}>Szczegóły</Link></Button>*/}
+                </Card.Body>
+            </Card>
+            </Link>
+        </div>
     );
 }
 
