@@ -6,7 +6,7 @@ import movies from "./Movies";
 
 
 const MovieCard = (props) => {
-    const {title, text, ranking, src} = props;
+    const {title, title2, ranking, src} = props;
 
     return (
         <Link style={{color: 'black', textDecoration: "none"}} to="/details" state={{ movie: props }}>
@@ -14,7 +14,7 @@ const MovieCard = (props) => {
             <Card.Img variant="top" src={src} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Card.Text>{text}</Card.Text>
+                <Card.Text>{title2}</Card.Text>
                 <Card.Text>Ocena: {ranking}</Card.Text>
                 {/*<Button variant="primary"><Link style={{color: 'white', textDecoration: "none"}} to={{pathname:"/movieDetails"}} state={{ movie: props }}>Szczegóły</Link></Button>*/}
             </Card.Body>
