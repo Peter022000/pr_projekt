@@ -19,14 +19,12 @@ const Home = (props) => {
             }).catch((error) => {
                 console.log(error);
             });
-
         } catch (error) {
             console.error(error);
         }
     }
 
     useEffect(() => {
-        console.log(state?.phrase)
         if(state?.phrase === undefined) {
             setMovies(allMovies)
         } else {
@@ -34,11 +32,13 @@ const Home = (props) => {
         }
     }, [state?.phrase]);
 
-
     useEffect(() => {
-        console.log("asdaszxczxc2")
-
-        setMovies(allMovies);
+        if(state?.phrase !== undefined){
+            setMovies(allMovies.filter(movie => movie?.title?.toLowerCase().includes(state?.phrase.toLowerCase())))
+        }
+        else {
+            setMovies(allMovies);
+        }
     }, [allMovies]);
 
     useEffect(() => {
