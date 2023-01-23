@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Footer from "./Footer";
 import Movies from "./Movies";
 import '../App.css';
+import axios from "axios";
 
 const Home = (props) => {
 
@@ -9,10 +10,12 @@ const Home = (props) => {
 
     const getMovies = async () => {
         try {
-            const response = await fetch('https://at.usermd.net/api/movies');
-            const json = await response.json();
+            axios({method: 'get', url: 'https://at.usermd.net/api/movies'}).then((response) => {
+                setMovies(response.data);
+            }).catch((error) => {
+                console.log(error);
+            });
 
-            setMovies(json)
         } catch (error) {
             console.error(error);
         }

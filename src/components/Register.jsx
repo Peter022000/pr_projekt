@@ -13,6 +13,7 @@ import {
 from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import axios, {AxiosError} from "axios"
 
 const Register = (props) => {
 
@@ -59,29 +60,18 @@ const Register = (props) => {
 
     const send = async () => {
 
-        const options = {
+        axios({
             method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: login,
+            url: 'https://at.usermd.net/api/user/create',
+            data: {
+                name: ''+login,
                 email: email,
-                password: password
-            })
-        }
+                password: password,
+            }}).then(response => {
+                alert("Zarejestrowano");
+                navigate("/signin");
+            }).catch((error: AxiosError) => alert(error.response.data))
 
-        await fetch('https://at.usermd.net/api/user/create', options)
-            .then(response => {
-                if (response.ok) {
-                    alert("Zarejestrowano");
-                    navigate("/signin");
-                } else {
-                    response.text().then(r => alert(r))
-                }
-            })
-            .catch(error => console.log( error ));
     }
 
     const register = () => {
