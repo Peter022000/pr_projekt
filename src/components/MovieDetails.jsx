@@ -10,7 +10,7 @@ const MovieDetails = (props) => {
     return (
         <div className="page-container">
             <div className="content-wrap" style={{display: "flex", flexDirection: "row", margin: 20}}>
-                <img style={{ width: "20%", height: "20%" }} src={movie.image} alt={'No image'}/>
+                <img style={{ width: "20%", height: "20%" }} src={movie.image}/>
                 <div style={{display: "flex", flexDirection: "column", margin: 20}}>
                     <p>Tytuł: {movie.title}</p>
                     <p className="text-break">Opis: {movie.content}</p>
