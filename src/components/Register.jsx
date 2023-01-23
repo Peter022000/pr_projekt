@@ -64,14 +64,13 @@ const Register = (props) => {
             method: 'POST',
             url: 'https://at.usermd.net/api/user/create',
             data: {
-                name: ''+login,
+                name: login,
                 email: email,
                 password: password,
             }}).then(response => {
                 alert("Zarejestrowano");
                 navigate("/signin");
-            }).catch((error: AxiosError) => alert(error.response.data))
-
+            }).catch((error: AxiosError) => alert(error.response.data));
     }
 
     const register = () => {

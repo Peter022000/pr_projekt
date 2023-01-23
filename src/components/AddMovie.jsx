@@ -10,6 +10,7 @@ import {
     from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
 import {useNavigate} from "react-router-dom";
+import axios, {AxiosError} from "axios";
 
 
 const AddMovie = (props) => {
@@ -41,29 +42,18 @@ const AddMovie = (props) => {
 
     const send = async () => {
 
-        const options = {
+        axios({
             method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
+            url: 'https://at.usermd.net/api/movies',
+            data: {
                 title: title,
                 image: image,
                 content: description
-            })
-        }
+            }}).then(response => {
+            alert("Dodano film");
+            navigate("/");
+        }).catch((error: AxiosError) => alert(error.response.data));
 
-        await fetch('https://at.usermd.net/api/movies', options)
-            .then(response => {
-                if (response.ok) {
-                    alert("Dodano film");
-                    navigate("/");
-                } else {
-                    response.text().then(r => alert(r))
-                }
-            })
-            .catch(error => console.log( error ));
     }
 
     const addMovie = () => {

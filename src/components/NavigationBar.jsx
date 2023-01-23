@@ -4,9 +4,26 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {Link, Outlet} from "react-router-dom";
+import {Link, Outlet, useNavigate} from "react-router-dom";
+import {useState} from "react";
+import home from "./Home";
 
 const NavigationBar = () => {
+
+    const [phrase, setPhrase] = useState('');
+
+    const navigate = useNavigate();
+
+    const search = () => {
+        navigate(
+                '/',
+                {
+                    state: {
+                        phrase: phrase
+                    }
+                })
+    }
+
     return (
         <>
             <Navbar bg="light" expand="lg" style={{height:'6vh'}}>
@@ -52,8 +69,10 @@ const NavigationBar = () => {
                                 placeholder=""
                                 className="me-2"
                                 aria-label="Search"
+                                value={phrase}
+                                onChange={e => setPhrase(e.target.value)}
                             />
-                            <Button variant="outline-success">Wyszukaj</Button>
+                            <Button onClick={() => search()} variant="outline-success">Wyszukaj</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>

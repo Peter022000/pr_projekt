@@ -3,15 +3,19 @@ import Footer from "./Footer";
 import Movies from "./Movies";
 import '../App.css';
 import axios from "axios";
+import {useLocation} from "react-router-dom";
 
 const Home = (props) => {
 
+    const [allMovies, setAllMovies] = useState([]);
     const [movies, setMovies] = useState([]);
 
-    const getMovies = async () => {
+    const { state } = useLocation();
+
+    const getMovies = () => {
         try {
             axios({method: 'get', url: 'https://at.usermd.net/api/movies'}).then((response) => {
-                setMovies(response.data);
+                setAllMovies(response.data);
             }).catch((error) => {
                 console.log(error);
             });
@@ -22,7 +26,23 @@ const Home = (props) => {
     }
 
     useEffect(() => {
-        getMovies().then(r => {});
+        console.log(state?.phrase)
+        if(state?.phrase === undefined) {
+            setMovies(allMovies)
+        } else {
+            setMovies(allMovies.filter(movie => movie?.title?.toLowerCase().includes(state?.phrase.toLowerCase())));
+        }
+    }, [state?.phrase]);
+
+
+    useEffect(() => {
+        console.log("asdaszxczxc2")
+
+        setMovies(allMovies);
+    }, [allMovies]);
+
+    useEffect(() => {
+        getMovies();
     }, []);
 
     return (
@@ -32,7 +52,6 @@ const Home = (props) => {
             </div>
             <Footer/>
         </div>
-
     );
 };
 
