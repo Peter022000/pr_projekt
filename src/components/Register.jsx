@@ -58,7 +58,7 @@ const Register = (props) => {
         return status;
     }
 
-    const send = async () => {
+    const send = () => {
 
         axios({
             method: 'POST',
@@ -75,7 +75,7 @@ const Register = (props) => {
 
     const register = () => {
         if(validate()){
-            send().then(r => {});
+            send();
         }
     }
 

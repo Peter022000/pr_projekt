@@ -25,21 +25,13 @@ const Home = (props) => {
     }
 
     useEffect(() => {
-        if(state?.phrase === undefined) {
-            setMovies(allMovies)
-        } else {
-            setMovies(allMovies.filter(movie => movie?.title?.toLowerCase().includes(state?.phrase.toLowerCase())));
-        }
-    }, [state?.phrase]);
-
-    useEffect(() => {
-        if(state?.phrase !== undefined){
-            setMovies(allMovies.filter(movie => movie?.title?.toLowerCase().includes(state?.phrase.toLowerCase())))
-        }
-        else {
+        if(state?.phrase === undefined){
             setMovies(allMovies);
         }
-    }, [allMovies]);
+        else {
+            setMovies(allMovies.filter(movie => movie?.title?.toLowerCase().includes(state?.phrase.toLowerCase())));
+        }
+    }, [allMovies, state?.phrase]);
 
     useEffect(() => {
         getMovies();

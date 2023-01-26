@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../App.css';
 import Footer from "./Footer";
 import {
@@ -11,10 +11,57 @@ import {
     MDBCardImage
 } from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
-import {Link} from "react-router-dom";
-
-
+import {Link, useNavigate} from "react-router-dom";
+import axios, {AxiosError} from "axios";
+import {decodeToken} from "react-jwt";
 const Login = (props) => {
+
+    const [login, setLogin] = useState('');
+    const [loginPlaceHolder, setLoginPlaceHolder] = useState('Wprowadź login');
+
+    const [password, setPassword] = useState('');
+    const [passwordPlaceHolder, setPasswordPlaceHolder] = useState('Wprowadź hasło');
+
+    const navigate = useNavigate();
+
+    const validate = () => {
+        let status = true;
+        if (login === '') {
+            alert("Wprowadź login!")
+            status = false;
+        } else if (password === '') {
+            alert("Wprowadź hasło!")
+            status = false;
+        } else if ( password.length < 8) {
+            alert("Za krótkie hasło!")
+            setPasswordPlaceHolder('Za krótkie hasło')
+            status = false;
+        }
+
+        return status;
+    }
+
+    const send = () => {
+
+        axios({
+            method: 'POST',
+            url: 'https://at.usermd.net/api/user/auth',
+            data: {
+                login: login,
+                password: password,
+            }}).then(response => {
+                localStorage.setItem("token", response.data["token"]);
+                alert("Zalogowano jako: " + decodeToken(localStorage.getItem('token'))["name"]);
+                window.location.href = "/";
+            }).catch((error: AxiosError) => alert(error.response.data));
+    }
+
+    const singUp = () =>{
+        if(validate()){
+            send()
+        }
+    }
+
 
     return (
         <div className="page-container">
@@ -27,15 +74,10 @@ const Login = (props) => {
 
                                     <p classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Logowanie</p>
 
-                                    <MDBInput wrapperClass='mb-4' label='Login' id='form1' type='email'/>
-                                    <MDBInput wrapperClass='mb-4' label='Hasło' id='form2' type='password'/>
+                                    <MDBInput placeholder={loginPlaceHolder} value={login} onChange={e => setLogin(e.target.value)} wrapperClass='mb-4' label='Login' id='form1' type='email'/>
+                                    <MDBInput placeholder={passwordPlaceHolder} value={password} onChange={e => setPassword(e.target.value)} wrapperClass='mb-4' label='Hasło' id='form2' type='password'/>
 
-                                    {/*<div className="d-flex justify-content-between mx-3 mb-4">*/}
-                                    {/*    <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />*/}
-                                    {/*    <a href="!#">Forgot password?</a>*/}
-                                    {/*</div>*/}
-
-                                    <Button className="mb-4">Zaloguj się</Button>
+                                    <Button onClick={() => singUp()} className="mb-4">Zaloguj się</Button>
 
                                     <div className="text-center">
                                         <p>Nie jesteś członkiem? <Link to="/signup">Zarejestruj</Link></p>

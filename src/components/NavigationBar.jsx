@@ -7,10 +7,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import {Link, Outlet, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import home from "./Home";
+import {isExpired} from "react-jwt";
 
 const NavigationBar = () => {
 
     const [phrase, setPhrase] = useState('');
+
+    const isNotLogged = isExpired(localStorage.getItem('token'));
+
 
     const navigate = useNavigate();
 
@@ -45,22 +49,28 @@ const NavigationBar = () => {
                                     Strona główna
                                 </Link>
                             </Nav.Link>
-                            <Nav.Link>
+                            {isNotLogged && <Nav.Link>
                                 <Link className="text-decoration-none text-black" to="/signin">
                                     Logowanie
                                 </Link>
-                            </Nav.Link>
-                            <Nav.Link>
+                            </Nav.Link>}
+                            {isNotLogged && <Nav.Link>
                                 <Link className="text-decoration-none text-black" to="/signup">
                                     Rejestracja
                                 </Link>
-                            </Nav.Link>
+                            </Nav.Link>}
 
-                            <Nav.Link>
+                            {!isNotLogged && <Nav.Link>
                                 <Link className="text-decoration-none text-black" to="/add">
                                     Dodaj film
                                 </Link>
-                            </Nav.Link>
+                            </Nav.Link>}
+
+                            {!isNotLogged && <Nav.Link>
+                                <Link onClick={() => {localStorage.removeItem('token'); window.location.href = "/";}} className="text-decoration-none text-black" to="/">
+                                    Wyloguj się
+                                </Link>
+                            </Nav.Link>}
 
                         </Nav>
                         <Form className="d-flex">
