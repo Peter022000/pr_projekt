@@ -40,8 +40,7 @@ const AddMovie = (props) => {
         return status;
     }
 
-    const send = async () => {
-
+    const send = () => {
         axios({
             method: 'POST',
             url: 'https://at.usermd.net/api/movies',
@@ -53,12 +52,11 @@ const AddMovie = (props) => {
             alert("Dodano film");
             navigate("/");
         }).catch((error: AxiosError) => alert(error.response.data));
-
     }
 
     const addMovie = () => {
         if(validate()){
-            send().then(r => {});
+            send();
         }
     }
 

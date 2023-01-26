@@ -15,7 +15,6 @@ const NavigationBar = () => {
 
     const isNotLogged = isExpired(localStorage.getItem('token'));
 
-
     const navigate = useNavigate();
 
     const search = () => {
