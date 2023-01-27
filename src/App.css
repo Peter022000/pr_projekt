@@ -46,3 +46,13 @@
   flex: 1;
 }
 
+.footer {
+  background-color: #F8F9FA;
+  height: 6vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+
