@@ -22,19 +22,17 @@ const Login = (props) => {
     const [password, setPassword] = useState('');
     const [passwordPlaceHolder, setPasswordPlaceHolder] = useState('Wprowadź hasło');
 
-    const navigate = useNavigate();
-
     const validate = () => {
         let status = true;
         if (login === '') {
-            alert("Wprowadź login!")
+            alert("Wprowadź login!");
             status = false;
         } else if (password === '') {
-            alert("Wprowadź hasło!")
+            alert("Wprowadź hasło!");
             status = false;
         } else if ( password.length < 8) {
-            alert("Za krótkie hasło!")
-            setPasswordPlaceHolder('Za krótkie hasło')
+            alert("Za krótkie hasło!");
+            setPasswordPlaceHolder('Za krótkie hasło');
             status = false;
         }
 
@@ -42,7 +40,6 @@ const Login = (props) => {
     }
 
     const send = () => {
-
         axios({
             method: 'POST',
             url: 'https://at.usermd.net/api/user/auth',
@@ -58,7 +55,7 @@ const Login = (props) => {
 
     const singUp = () =>{
         if(validate()){
-            send()
+            send();
         }
     }
 
@@ -89,11 +86,8 @@ const Login = (props) => {
                             </MDBRow>
                         </MDBCardBody>
                     </MDBCard>
-
                 </MDBContainer>
-
             </div>
-
             <Footer/>
         </div>
     );

@@ -6,12 +6,10 @@ import {
     MDBContainer,
     MDBInput, MDBRow,
     MDBTextArea
-}
-    from 'mdb-react-ui-kit';
+} from 'mdb-react-ui-kit';
 import Button from "react-bootstrap/Button";
 import {useNavigate} from "react-router-dom";
 import axios, {AxiosError} from "axios";
-
 
 const AddMovie = (props) => {
 

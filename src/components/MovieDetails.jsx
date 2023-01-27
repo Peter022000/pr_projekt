@@ -9,11 +9,8 @@ const MovieDetails = (props) => {
 
     const location = useLocation();
     const movie = location.state?.movie;
-
     const isNotLogged = isExpired(localStorage.getItem('token'));
-
     const user = decodeToken(localStorage.getItem('token'));
-
     const navigate = useNavigate();
 
     const delete_movie = () => {
@@ -40,7 +37,6 @@ const MovieDetails = (props) => {
             </div>
             <Footer/>
         </div>
-
     );
 };
 

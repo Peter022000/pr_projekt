@@ -59,7 +59,6 @@ const Register = (props) => {
     }
 
     const send = () => {
-
         axios({
             method: 'POST',
             url: 'https://at.usermd.net/api/user/create',
@@ -119,6 +118,7 @@ const Register = (props) => {
 
             <Footer/>
         </div>
-    );};
+    );
+};
 
 export default Register;

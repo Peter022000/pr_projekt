@@ -9,7 +9,6 @@ const Home = (props) => {
 
     const [allMovies, setAllMovies] = useState([]);
     const [movies, setMovies] = useState([]);
-
     const { state } = useLocation();
 
     const getMovies = () => {
