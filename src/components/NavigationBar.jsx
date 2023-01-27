@@ -33,14 +33,14 @@ const NavigationBar = () => {
 
     return (
         <>
-            <Navbar bg="light" expand="lg" style={{height:'6vh'}}>
+            <Navbar bg="light" expand="lg" style={{height:'4rem'}}>
                 <Container fluid>
                     <Navbar.Brand>
                         <Link className="text-decoration-none text-black" to="/">
                             Filmoteka
                         </Link>
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Toggle style={{marginBottom:'1rem'}} aria-controls="navbarScroll" />
                     <Navbar.Collapse style={{backgroundColor: "#f8f9fa", zIndex:1000}} id="navbarScroll">
                         <Nav
                             className="me-auto my-2 my-lg-0"
