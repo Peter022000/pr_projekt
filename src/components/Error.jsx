@@ -1,19 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../App.css';
-import Footer from "./Footer";
-import {
-    MDBContainer,
-    MDBInput,
-    MDBCard,
-    MDBCardBody,
-    MDBRow,
-    MDBCol,
-    MDBCardImage
-} from 'mdb-react-ui-kit';
-import Button from "react-bootstrap/Button";
-import {Link, useNavigate} from "react-router-dom";
-import axios, {AxiosError} from "axios";
-import {decodeToken} from "react-jwt";
+
 const Error = (props) => {
 
     return (
@@ -23,7 +10,6 @@ const Error = (props) => {
                     Page not found
                 </p>
             </div>
-            <Footer/>
         </div>
     );
 };

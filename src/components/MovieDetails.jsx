@@ -1,6 +1,5 @@
 import React from "react";
 import {useLocation, useNavigate} from "react-router-dom";
-import Footer from "./Footer";
 import Button from "react-bootstrap/Button";
 import {decodeToken, isExpired} from "react-jwt";
 import axios, {AxiosError} from "axios";
@@ -35,7 +34,6 @@ const MovieDetails = (props) => {
                     {(!isNotLogged && user["isAdmin"])&& <Button style={{width: "10rem", margin: "1rem"}} onClick={() => {delete_movie()}} className="mb-4">Usuń</Button>}
                 </div>
             </div>
-            <Footer/>
         </div>
     );
 };

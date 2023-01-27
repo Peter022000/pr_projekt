@@ -8,13 +8,15 @@ import MovieDetails from "./components/MovieDetails";
 import AddMovie from "./components/AddMovie";
 import {isExpired} from "react-jwt";
 import Error from "./components/Error";
+import Footer from "./components/Footer";
+import React from "react";
 
 function App() {
 
     return (
       <BrowserRouter>
           <Routes>
-              <Route path="/" element={<NavigationBar />}>
+              <Route path="/" element={<><NavigationBar /><Footer/></>}>
                   <Route index element={<Home />} />
                   <Route path="signin" element={!isExpired(localStorage.getItem('token')) ? <Navigate replace to="/"/> : <Login/>} />
                   <Route path="signup" element={!isExpired(localStorage.getItem('token')) ? <Navigate replace to="/"/> : <Register/>} />

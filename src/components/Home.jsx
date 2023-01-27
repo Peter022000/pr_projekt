@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Footer from "./Footer";
 import Movies from "./Movies";
 import '../App.css';
 import axios from "axios";
@@ -41,7 +40,6 @@ const Home = (props) => {
             <div className="content-wrap">
                 <Movies movies={movies}></Movies>
             </div>
-            <Footer/>
         </div>
     );
 };
