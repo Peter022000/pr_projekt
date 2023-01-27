@@ -31,7 +31,6 @@ const NavigationBar = () => {
         search();
     }
 
-
     return (
         <>
             <Navbar bg="light" expand="lg" style={{height:'6vh'}}>
