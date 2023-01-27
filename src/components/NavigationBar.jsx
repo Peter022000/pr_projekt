@@ -26,6 +26,12 @@ const NavigationBar = () => {
                 })
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        search();
+    }
+
+
     return (
         <>
             <Navbar bg="light" expand="lg" style={{height:'6vh'}}>
@@ -71,7 +77,7 @@ const NavigationBar = () => {
                             </Nav.Link>}
 
                         </Nav>
-                        <Form className="d-flex">
+                        <Form className="d-flex" onSubmit={handleSubmit}>
                             <Form.Control
                                 type="search"
                                 placeholder=""
