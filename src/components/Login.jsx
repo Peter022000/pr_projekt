@@ -30,10 +30,6 @@ const Login = (props) => {
         } else if (password === '') {
             alert("Wprowadź hasło!");
             status = false;
-        } else if ( password.length < 8) {
-            alert("Za krótkie hasło!");
-            setPasswordPlaceHolder('Za krótkie hasło');
-            status = false;
         }
 
         return status;

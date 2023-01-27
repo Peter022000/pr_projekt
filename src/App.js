@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import MovieDetails from "./components/MovieDetails";
 import AddMovie from "./components/AddMovie";
 import {isExpired} from "react-jwt";
+import Error from "./components/Error";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                   <Route path="signup" element={!isExpired(localStorage.getItem('token')) ? <Navigate replace to="/"/> : <Register/>} />
                   <Route path="details" element={<MovieDetails />} />
                   <Route path="add" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/"/> : <AddMovie/>} />
+                  <Route path="*" element={<Error />} />
               </Route>
           </Routes>
       </BrowserRouter>

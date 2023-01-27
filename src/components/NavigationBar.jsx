@@ -6,7 +6,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Link, Outlet, useNavigate} from "react-router-dom";
 import {useState} from "react";
-import home from "./Home";
 import {isExpired} from "react-jwt";
 
 const NavigationBar = () => {
