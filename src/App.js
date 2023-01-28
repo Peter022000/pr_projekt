@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate, Outlet} from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import Home from "./components/Home";
 import Register from "./components/Register";
@@ -14,11 +14,11 @@ import React from "react";
 function App() {
 
     const isNotLogged = isExpired(localStorage.getItem('token'));
-    
+
     return (
       <BrowserRouter>
           <Routes>
-              <Route path="/" element={<><NavigationBar /><Footer/></>}>
+              <Route path="/" element={<><NavigationBar/><Outlet/><Footer/></>}>
                   <Route index element={<Home />} />
                   <Route path="signin" element={!isNotLogged ? <Navigate replace to="/"/> : <Login/>} />
                   <Route path="signup" element={!isNotLogged ? <Navigate replace to="/"/> : <Register/>} />
