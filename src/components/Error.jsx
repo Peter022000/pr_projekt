@@ -7,7 +7,7 @@ const Error = (props) => {
         <div className="page-container">
             <div className="content-wrap" style={{display: "flex", alignContent: "center", alignItems: "center", justifyContent: "center"}}>
                 <p style={{fontSize: "3rem"}}>
-                    Page not found
+                    Strona nie znaleziona
                 </p>
             </div>
         </div>
