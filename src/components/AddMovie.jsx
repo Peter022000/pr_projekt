@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import '../App.css';
-import Footer from "./Footer";
 import {
     MDBCard, MDBCardBody, MDBCol,
     MDBContainer,
@@ -76,7 +75,6 @@ const AddMovie = (props) => {
                     </MDBCard>
                 </MDBContainer>
             </div>
-            <Footer/>
         </div>
     );
 };

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Footer from "./Footer";
 import {
     MDBContainer,
     MDBRow,
@@ -115,8 +114,6 @@ const Register = (props) => {
 
                 </MDBContainer>
             </div>
-
-            <Footer/>
         </div>
     );
 };

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import '../App.css';
-import Footer from "./Footer";
 import {
     MDBContainer,
     MDBInput,
@@ -84,7 +83,6 @@ const Login = (props) => {
                     </MDBCard>
                 </MDBContainer>
             </div>
-            <Footer/>
         </div>
     );
 };

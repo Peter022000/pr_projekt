@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import Footer from "./Footer";
 import Movies from "./Movies";
 import '../App.css';
-import axios from "axios";
+import axios, {all} from "axios";
 import {useLocation} from "react-router-dom";
 
 const Home = (props) => {
@@ -41,7 +40,6 @@ const Home = (props) => {
             <div className="content-wrap">
                 <Movies movies={movies}></Movies>
             </div>
-            <Footer/>
         </div>
     );
 };
