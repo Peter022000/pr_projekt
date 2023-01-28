@@ -13,15 +13,17 @@ import React from "react";
 
 function App() {
 
+    const isNotLogged = isExpired(localStorage.getItem('token'));
+    
     return (
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<><NavigationBar /><Footer/></>}>
                   <Route index element={<Home />} />
-                  <Route path="signin" element={!isExpired(localStorage.getItem('token')) ? <Navigate replace to="/"/> : <Login/>} />
-                  <Route path="signup" element={!isExpired(localStorage.getItem('token')) ? <Navigate replace to="/"/> : <Register/>} />
+                  <Route path="signin" element={!isNotLogged ? <Navigate replace to="/"/> : <Login/>} />
+                  <Route path="signup" element={!isNotLogged ? <Navigate replace to="/"/> : <Register/>} />
                   <Route path="details" element={<MovieDetails />} />
-                  <Route path="add" element={isExpired(localStorage.getItem('token')) ? <Navigate replace to="/"/> : <AddMovie/>} />
+                  <Route path="add" element={isNotLogged ? <Navigate replace to="/"/> : <AddMovie/>} />
                   <Route path="*" element={<Error />} />
               </Route>
           </Routes>
