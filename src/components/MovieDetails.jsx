@@ -6,7 +6,7 @@ import axios, {AxiosError} from "axios";
 
 const MovieDetails = (props) => {
 
-    const [movie2, setMovie] = useState();
+    const [movie2, setMovie2] = useState();
 
     const location = useLocation();
     const movie = location.state?.movie;
@@ -28,7 +28,7 @@ const MovieDetails = (props) => {
         try {
             axios({method: 'get', url: 'https://at.usermd.net/api/movies/' + movie.id}).then((response) => {
                 console.log(response.data);
-                setMovie(response.data);
+                setMovie2(response.data);
             }).catch((error) => {
                 console.log(error);
             });
