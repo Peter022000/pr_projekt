@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Movies from "./Movies";
 import '../App.css';
-import axios from "axios";
+import axios, {all} from "axios";
 import {useLocation} from "react-router-dom";
 
 const Home = (props) => {

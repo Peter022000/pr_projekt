@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import {decodeToken, isExpired} from "react-jwt";
@@ -21,6 +21,23 @@ const MovieDetails = (props) => {
             navigate("/");
         }).catch((error: AxiosError) => alert(error.response.data));
     }
+
+    const getMovie = () => {
+        try {
+            axios({method: 'get', url: 'https://at.usermd.net/api/movies/' + movie.id}).then((response) => {
+                console.log(response.data);
+            }).catch((error) => {
+                console.log(error);
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        getMovie();
+    }, []);
+
 
     return (
         <div className="page-container">
