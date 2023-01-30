@@ -25,16 +25,12 @@ const MovieDetails = (props) => {
     }
 
     const getMovie = () => {
-        try {
-            axios({method: 'get', url: 'https://at.usermd.net/api/movies/' + movie.id}).then((response) => {
-                console.log(response.data);
-                setMovie2(response.data);
-            }).catch((error) => {
-                console.log(error);
-            });
-        } catch (error) {
-            console.error(error);
-        }
+        axios({method: 'get', url: 'https://at.usermd.net/api/movies/' + movie.id}).then((response) => {
+            console.log(response.data);
+            setMovie2(response.data);
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     useEffect(() => {

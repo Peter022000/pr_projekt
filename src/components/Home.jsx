@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Movies from "./Movies";
 import '../App.css';
-import axios, {all} from "axios";
+import axios from "axios";
 import {useLocation} from "react-router-dom";
 
 const Home = (props) => {
@@ -11,15 +11,11 @@ const Home = (props) => {
     const { state } = useLocation();
 
     const getMovies = () => {
-        try {
-            axios({method: 'get', url: 'https://at.usermd.net/api/movies'}).then((response) => {
-                setAllMovies(response.data);
-            }).catch((error) => {
-                console.log(error);
-            });
-        } catch (error) {
-            console.error(error);
-        }
+        axios({method: 'get', url: 'https://at.usermd.net/api/movies'}).then((response) => {
+            setAllMovies(response.data);
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     useEffect(() => {
