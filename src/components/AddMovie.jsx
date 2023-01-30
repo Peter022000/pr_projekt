@@ -48,7 +48,7 @@ const AddMovie = (props) => {
             }}).then(response => {
             alert("Dodano film");
             navigate("/");
-        }).catch((error: AxiosError) => alert(error.response.data));
+            }).catch((error: AxiosError) => alert(error.response.data));
     }
 
     const addMovie = () => {
