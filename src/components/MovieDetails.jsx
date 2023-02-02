@@ -14,7 +14,7 @@ const MovieDetails = (props) => {
     const user = decodeToken(localStorage.getItem('token'));
     const navigate = useNavigate();
 
-    const delete_movie = () => {
+    const deleteMovie = () => {
         axios({
             method: 'DELETE',
             url: 'https://at.usermd.net/api/movie/' + movie.id,
@@ -47,7 +47,7 @@ const MovieDetails = (props) => {
                         <p>Tytuł: {movie.title}</p>
                         <p className="text-break">Opis: {movie.content}</p>
                     </div>
-                    {(!isNotLogged && user["isAdmin"])&& <Button style={{width: "10rem", margin: "1rem"}} onClick={() => {delete_movie()}} className="mb-4">Usuń</Button>}
+                    {(!isNotLogged && user["isAdmin"])&& <Button style={{width: "10rem", margin: "1rem"}} onClick={() => {deleteMovie()}} className="mb-4">Usuń</Button>}
                 </div>
             </div>
         </div>
