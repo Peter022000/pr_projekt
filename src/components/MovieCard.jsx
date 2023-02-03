@@ -1,22 +1,17 @@
 import Card from 'react-bootstrap/Card';
 import React from "react";
-import Button from "react-bootstrap/Button";
 import {Link} from 'react-router-dom'
-import movies from "./Movies";
-
 
 const MovieCard = (props) => {
-    const {title, title2, ranking, src} = props;
 
     return (
         <div style={{margin: '1em'}}>
-            <Link style={{color: 'black', textDecoration: "none"}} to="/details" state={{ movie: props }}>
+            <Link style={{color: 'black', textDecoration: "none"}} to="/details" state={{ movie: props.movie }}>
             <Card style={{ width: '18rem', zIndex:1}}>
-                <Card.Img variant="top" src={src} />
+                <Card.Img variant="top" src={props.movie.image} alt={"No image"}/>
                 <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    <Card.Text>{title2}</Card.Text>
-                    <Card.Text>Ocena: {ranking}</Card.Text>
+                    <Card.Title>{props.movie.title}</Card.Title>
+                    {/*<Card.Text>{props.movie.content}</Card.Text>*/}
                     {/*<Button variant="primary"><Link style={{color: 'white', textDecoration: "none"}} to={{pathname:"/movieDetails"}} state={{ movie: props }}>Szczegóły</Link></Button>*/}
                 </Card.Body>
             </Card>

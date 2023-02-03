@@ -4,9 +4,9 @@ import MovieCard from "./MovieCard";
 const Movies = (props) => {
 
     return (
-        <div style={{display: "flex", flexWrap:"wrap", justifyContent: "center" }}>
+        <div style={{display: "flex", flexWrap:"wrap", justifyContent: "center", padding: "1rem"}}>
             {props.movies.map((movie, index) => (
-                <MovieCard title={movie.title} title2={movie.title2} ranking={movie.ratings} src={movie.src} description={movie.description} />
+                <MovieCard movie={movie} />
             ))}
         </div>
     );
